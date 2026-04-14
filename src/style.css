@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: theme('fontFamily.body');
+    color: theme('colors.ink');
+    background: #f3f4f6;
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@layer components {
+   .panel {
+     @apply bg-white p-6;
+   }
+
+  .section-title {
+    @apply font-display text-2xl font-bold text-ink md:text-3xl;
+  }
+
+   .pill {
+     @apply inline-flex items-center border border-gray-300 bg-gray-100 px-3 py-1 text-sm font-medium text-gray-700;
+   }
+
+   .primary-button {
+     @apply inline-flex items-center justify-center border border-gray-900 bg-white px-5 py-3 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed disabled:opacity-40;
+   }
+
+   .secondary-button {
+     @apply inline-flex items-center justify-center border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm font-semibold text-gray-800 disabled:cursor-not-allowed disabled:opacity-40;
+   }
+
+   .input {
+     @apply w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-800 outline-none focus:border-gray-500;
+   }
+}
