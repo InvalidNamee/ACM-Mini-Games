@@ -19,10 +19,15 @@ const { results, totalScore, unlockedTier, nextGoal, resetAllProgress } = useGam
             </p>
           </div>
 
-          <div class="flex flex-wrap gap-2">
-            <span v-for="game in GAME_CATALOG" :key="game.id" class="pill">
-              {{ game.title }} · {{ game.summary }}
-            </span>
+          <div class="border border-gray-200 bg-gray-50 p-4 text-sm leading-6 text-gray-700">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">活动推广</p>
+            <p class="mt-2">
+              如果你玩得开心，也欢迎来支持 ACM 俱乐部在周四数据科技日晚上的 UPCPC 体验赛 2026。
+              现场会有更多算法题和小奖品，名额有限，先到先得。
+            </p>
+            <p class="mt-2">
+              具体报名可以在石光搜索“UPCPC体验赛2026”，记得顺手看看活动公告里的参赛手册。
+            </p>
           </div>
         </div>
 
@@ -66,18 +71,24 @@ const { results, totalScore, unlockedTier, nextGoal, resetAllProgress } = useGam
         </div>
 
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <article v-for="game in GAME_CATALOG" :key="game.id" class="border border-gray-200 bg-white p-5">
+          <article v-for="game in GAME_CATALOG" :key="game.id" class="border border-gray-200 bg-white p-5 flex h-full flex-col">
             <p class="text-sm font-semibold text-ink">{{ game.title }}</p>
-            <p class="mt-2 text-sm leading-6 text-ink/60">{{ game.summary }}</p>
-            <template v-if="results[game.id]">
-              <p class="mt-6 text-3xl font-semibold ">{{ results[game.id].score }}</p>
-              <p class="mt-2 text-sm text-ink/70">{{ results[game.id].detail }}</p>
-            </template>
-            <template v-else>
-              <p class="mt-6 text-xl font-semibold text-ink/35">未完成</p>
-              <p class="mt-2 text-sm text-ink/55">还没有生成积分记录。</p>
-            </template>
-            <RouterLink class="primary-button mt-6" :to="game.route">进入挑战</RouterLink>
+            <p class="mt-2 min-h-12 text-sm leading-6 text-ink/60">{{ game.summary }}</p>
+            <div class="mt-6 flex flex-1 flex-col justify-between gap-4">
+              <template v-if="results[game.id]">
+                <div>
+                  <p class="text-3xl font-semibold">{{ results[game.id].score }}</p>
+                  <p class="mt-2 text-sm text-ink/70">{{ results[game.id].detail }}</p>
+                </div>
+              </template>
+              <template v-else>
+                <div>
+                  <p class="text-xl font-semibold text-ink/35">未完成</p>
+                  <p class="mt-2 text-sm text-ink/55">还没有生成积分记录。</p>
+                </div>
+              </template>
+              <RouterLink class="primary-button w-full" :to="game.route">进入挑战</RouterLink>
+            </div>
           </article>
         </div>
       </div>
