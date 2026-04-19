@@ -36,7 +36,7 @@ function resetGame() {
 
 function scoreFromMoves(totalMoves) {
   const extraMoves = Math.max(totalMoves - PERFECT_STEPS, 0)
-  return Math.max(20, 100 - Math.floor(Math.log2(extraMoves)) * 20)
+  return Math.min(100, Math.max(20, 100 - Math.floor(Math.log2(extraMoves)) * 20))
 }
 
 function selectTower(index) {
